@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   const forFetchFunction = async (data) => {
     try {
-      const response = await fetch("http://localhost:3000/submit", {
+      const response = await fetch("https://gokulnath-portfolio-3.onrender.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

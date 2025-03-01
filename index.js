@@ -4,15 +4,17 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
-
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "../")));
+app.use(express.static(path.join(__dirname, "public")));
+
 const mailId = process.env.Emaild;
 const password = process.env.EmailPwd
 const dbUrl = process.env.MONGO_URI
 console.log(dbUrl)
+
+
 app.listen(3000, async () => {
     console.log("Server running on port 3000");
     try {
@@ -46,8 +48,8 @@ const clientSchema = new mongoose.Schema({
 
 const Client = mongoose.model("client", clientSchema);
 
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../index.html"));
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 app.post("/submit", async (req, res) => {
